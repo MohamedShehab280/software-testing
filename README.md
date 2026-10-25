@@ -26,10 +26,10 @@ git pull
 `main` always has the latest week. Each week also has its own branch, with the project exactly as it
 was at the end of that section:
 
-| Week | Branch | Topic | Slides | Code |
-|---|---|---|---|---|
-| 3 | [`week-03`](../../tree/week-03) | Defect Reports and First Selenium Script | [slides](week-03/Week%203%20-%20Defect%20Reports%20and%20First%20Selenium%20Script.pptx) | [`week3`](selenium-project/src/test/java/week3) |
-| 4 | [`week-04`](../../tree/week-04) | Locators | [slides](week-04/Week%204%20-%20Locators%20and%20Assertions.pptx) | [`week4`](selenium-project/src/test/java/week4) |
+| Week | Branch | Topic | Slides | Code | Recording |
+|---|---|---|---|---|---|
+| 3 | [`week-03`](../../tree/week-03) | Defect Reports and First Selenium Script | [slides](week-03/Week%203%20-%20Defect%20Reports%20and%20First%20Selenium%20Script.pptx) | [`week3`](selenium-project/src/test/java/week3) | [video](https://youtu.be/Y9GRkEYdb_M) |
+| 4 | [`week-04`](../../tree/week-04) | Locators | [slides](week-04/Week%204%20-%20Locators%20and%20Assertions.pptx) | [`week4`](selenium-project/src/test/java/week4) | [video](https://youtu.be/stCIRRZV_18) |
 
 To move to a week's branch after cloning:
 
@@ -37,7 +37,7 @@ To move to a week's branch after cloning:
 git checkout week-03
 ```
 
-Recordings of every section: [YouTube playlist](https://www.youtube.com/playlist?list=PLKnIp8idj8qM)
+All the recordings: [YouTube playlist](https://www.youtube.com/playlist?list=PLKnIp8idj8qM)
 
 ## The task for weeks 3 and 4
 
