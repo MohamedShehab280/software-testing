@@ -32,11 +32,12 @@ Recordings of every section: [YouTube playlist](https://www.youtube.com/playlist
 
 ## The task for weeks 3 and 4
 
-**[Weeks 3-4 - Lab Sheet.pdf](week-04/Weeks%203-4%20-%20Lab%20Sheet.pdf)** — one task, three parts:
+**[Weeks 3-4 - Lab Sheet.docx](week-04/Weeks%203-4%20-%20Lab%20Sheet.docx)** — download it and fill it in
+Word ([PDF](week-04/Weeks%203-4%20-%20Lab%20Sheet.pdf) to read). One task, three parts:
 
 | Part | What you do |
 |---|---|
-| A | Test saucedemo.com by hand and write a full defect report |
+| A | Test saucedemo.com by hand: find the 8 defects of problem_user (the first is done for you), and write a full report for one |
 | B | Write `ShopVisit`: navigation, window sizes, tabs and priorities |
 | C | Write `ShopCheck`: locators and asserts that catch the defects you found in Part A |
 
