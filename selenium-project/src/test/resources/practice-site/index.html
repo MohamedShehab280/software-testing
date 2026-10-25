@@ -22,7 +22,8 @@
 </section>
 <section class="card" id="card-open">
 <h2>How to open this site <span class="tag">Resources</span></h2>
-<p>The folder <code>practice-site</code> is in <code>src/test/resources</code>. Maven copies it next to your compiled tests, so you open it by name, from any computer:</p><pre id="open-code">driver.get(getClass().getResource("/practice-site/forms.html").toString());</pre><p>Add <code>?hints=off</code> to hide every hint:</p><pre>driver.get(getClass().getResource("/practice-site/forms.html") + "?hints=off");</pre>
+<p>The folder <code>practice-site</code> is in <code>src/test/resources</code>, inside your project. Open a page with its path from the project folder:</p><pre id="open-code">File website = new File("src/test/resources/practice-site/forms.html");
+driver.get(website.toURI().toString());</pre><p>Add <code>?hints=off</code> to hide every hint:</p><pre>driver.get(website.toURI() + "?hints=off");</pre>
 </section>
 <section class="card" id="card-pages">
 <h2>Practice pages <span class="tag">Nine pages</span></h2>

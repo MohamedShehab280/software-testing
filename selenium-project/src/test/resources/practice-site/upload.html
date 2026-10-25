@@ -15,11 +15,11 @@
 <div id="bug-banner" hidden>Bug mode is on: this page has defects in it on purpose.</div>
 <main id="main-content">
 <h1 id="page-title">File Upload</h1>
-<p class="intro">Uploading means <code>sendKeys</code> with a file path. A sample file is in <code>src/test/resources/practice-site/assets/sample.txt</code>.</p>
+<p class="intro">Uploading means <code>sendKeys</code> with the full path of a file. A sample file is in <code>src/test/resources/practice-site/assets/sample.txt</code>.</p>
 <section class="card" id="card-upload-tip">
 <h2>How Selenium uploads a file <span class="tag">sendKeys</span></h2>
-<p>Selenium cannot use the file window of the operating system. Send the full path of the file to the <code>&lt;input type="file"&gt;</code> instead:</p><pre id="upload-code">String path = Paths.get(getClass().getResource("/practice-site/assets/sample.txt").toURI()).toString();
-driver.findElement(By.id("simple-file-input")).sendKeys(path);</pre>
+<p>Selenium cannot use the file window of the operating system. Send the full path of the file to the <code>&lt;input type="file"&gt;</code> instead:</p><pre id="upload-code">File file = new File("src/test/resources/practice-site/assets/sample.txt");
+driver.findElement(By.id("simple-file-input")).sendKeys(file.getAbsolutePath());</pre>
 </section>
 <section class="card" id="card-simple-upload">
 <h2>Simple file input <span class="tag">ID</span><span class="tag">Name</span><span class="tag">CSS</span></h2>

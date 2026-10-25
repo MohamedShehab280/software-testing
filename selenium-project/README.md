@@ -27,18 +27,19 @@ this project: nine pages, one for each kind of element — forms, dropdowns, che
 tables, alerts and modals, waits, iFrames, file upload, and drag and drop. Every element has a hint with its
 locators, in Java.
 
-It sits in `src/test/resources`, the Maven folder for files your tests need. When you run a test, Maven
-copies it next to your compiled tests, so you open it by name and it works on any computer:
+It sits in `src/test/resources`, the Maven folder for files your tests need. Open a page with its path from
+the project folder — the same way as in the course:
 
 ```java
-driver.get(getClass().getResource("/practice-site/forms.html").toString());
+File website = new File("src/test/resources/practice-site/forms.html");
+driver.get(website.toURI().toString());
 ```
 
 Double-click `src/test/resources/practice-site/index.html` to look at it in Chrome first. The **Hide hints**
 button at the top hides every hint; in code, add `?hints=off` to the address:
 
 ```java
-driver.get(getClass().getResource("/practice-site/forms.html") + "?hints=off");
+driver.get(website.toURI() + "?hints=off");
 ```
 
 ## Week 3 — the browser
