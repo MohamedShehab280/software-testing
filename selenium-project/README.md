@@ -15,22 +15,33 @@ TestNG, and Selenium downloads the Chrome driver by itself the first time you ru
 
 1. IntelliJ › **File › Open** › choose `pom.xml` › **Open as Project**.
 2. Wait for Maven to finish downloading (the progress bar at the bottom right). The first time needs internet.
-3. Open `src/test/java/week3/FirstProject.java` and click the green ▶ next to the class name.
+3. Open any class with a green ▶ next to its name and click it. To run all of them: right-click
+   `testng.xml` › **Run**.
 
-## Week 3
+Each week has two files, to show you the shape. The rest you write yourself in the lab sheet.
 
-Two files, to show you the shape. The rest you write yourself in the lab sheet.
+## Week 3 — the browser
 
 | File | What it shows |
 |---|---|
 | `FirstProject` | The shape of a test: `@Test`, open Chrome, go to a page, print the title, close. |
 | `BrowserActions` | Every browser command from the section, each behind a method with a clear name: navigation, window size and position, page title and URL, tabs and handles, closing. It has no `@Test`, so it does not run on its own. Use it as a reference. |
 
-## Your task before next week
+## Week 4 — locators and assertions
 
-Create a **new** Maven project yourself (do not just open this one), add the two dependencies to
-`pom.xml`, reload Maven, and get `FirstProject` running. Then do Part B of the
-[lab sheet](../week-03/Week%203%20-%20Lab%20Sheet.pdf) in that project.
+| File | What it shows |
+|---|---|
+| `ElementActions` | Every element command behind a method: `type`, `click`, `getText`, `getAttribute`, `isDisplayed`, `count`. Like `BrowserActions`, it has no `@Test`. |
+| `LoginTest` | Four real tests with asserts: a valid login, a wrong password, a locked-out user and an empty username. Uses `@BeforeMethod` so every test starts with a fresh browser. Run it: all four pass. |
+
+Before you write a locator in code, test it in Chrome: **F12 › Elements › Ctrl + F**, type it, and
+look for **1 of 1**.
+
+## Your task
+
+The [lab sheet for weeks 3 and 4](../week-04/Weeks%203-4%20-%20Lab%20Sheet.pdf). Do Parts B and C in
+your **own** Maven project — create it yourself, do not just open this one. Add the two
+dependencies to `pom.xml` and reload Maven:
 
 ```xml
 <dependencies>

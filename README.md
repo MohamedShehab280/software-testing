@@ -23,15 +23,33 @@ git pull
 
 ## The weeks
 
-| Week | Topic | Slides | Lab sheet | Video |
-|---|---|---|---|---|
-| 3 | Defect Reports and First Selenium Script | [slides](week-03/Week%203%20-%20Defect%20Reports%20and%20First%20Selenium%20Script.pptx) | [lab sheet](week-03/Week%203%20-%20Lab%20Sheet.pdf) | [playlist](https://www.youtube.com/playlist?list=PLKnIp8idj8qM) |
+| Week | Topic | Slides | Code |
+|---|---|---|---|
+| 3 | Defect Reports and First Selenium Script | [slides](week-03/Week%203%20-%20Defect%20Reports%20and%20First%20Selenium%20Script.pptx) | [`week3`](selenium-project/src/test/java/week3) |
+| 4 | Locators and Assertions | [slides](week-04/Week%204%20-%20Locators%20and%20Assertions.pptx) | [`week4`](selenium-project/src/test/java/week4) |
+
+Recordings of every section: [YouTube playlist](https://www.youtube.com/playlist?list=PLKnIp8idj8qM)
+
+## The task for weeks 3 and 4
+
+**[Weeks 3-4 - Lab Sheet.pdf](week-04/Weeks%203-4%20-%20Lab%20Sheet.pdf)** — one task, three parts:
+
+| Part | What you do |
+|---|---|
+| A | Test saucedemo.com by hand and write a full defect report |
+| B | Write `ShopVisit`: navigation, window sizes, tabs and priorities |
+| C | Write `ShopCheck`: locators and asserts that catch the defects you found in Part A |
+
+Hand in on the form before section 5: the sheet, `ShopVisit.java`, `ShopCheck.java` and one
+screenshot of a run. At the start of section 5 you run Parts B and C in front of the TA.
+
+**This repo is for reading. Do not submit here.**
 
 ## The Selenium project
 
-[`selenium-project/`](selenium-project/) is one Maven project that grows every week: week 3 is in the
-`week3` package, week 4 will be in `week4`, and so on. How to open and run it is in its own
-[README](selenium-project/README.md).
+[`selenium-project/`](selenium-project/) is one Maven project that grows every week: a package per
+week (`week3`, `week4`, …), and two reference files in each — the shape, not the answers. How to
+open and run it is in its own [README](selenium-project/README.md).
 
 ## Questions
 
