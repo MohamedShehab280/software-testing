@@ -17,8 +17,8 @@ Recording: [YouTube playlist](https://www.youtube.com/playlist?list=PLKnIp8idj8q
 ## Get it
 
 ```bash
-git clone https://github.com/MohamedShehab280/se2-sections.git
-cd se2-sections
+git clone https://github.com/MohamedShehab280/software-testing.git
+cd software-testing
 git checkout week-03
 ```
 
