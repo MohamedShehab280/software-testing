@@ -24,7 +24,7 @@ Open it in IntelliJ: **File › Open** › choose `pom.xml` › **Open as Projec
 |---|---|
 | `Setup.java` | Ready. `Setup.chrome()` opens Chrome in incognito, and `Setup.pause()` waits two seconds. |
 | `ShopVisit.java` | Empty. **You write it** — Part B, Exercise 5. |
-| `ShopOrder.java` | Empty. **You write it** — Part C, Exercise 7. |
+| `ShopOrder.java` | Empty. **You write it** — Part C, Exercise 6. |
 
 All three are in `src/test/java/task`.
 
