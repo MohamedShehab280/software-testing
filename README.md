@@ -41,8 +41,12 @@ Word ([PDF](week-04/Weeks%203-4%20-%20Lab%20Sheet.pdf) to read). One task, three
 | B | Write `ShopVisit`: navigation, window sizes, tabs and priorities |
 | C | Write `ShopCheck`: locators and asserts that catch the defects you found in Part A |
 
-Hand in on the form before section 5: the sheet, `ShopVisit.java`, `ShopCheck.java` and one
-screenshot of a run. At the start of section 5 you run Parts B and C in front of the TA.
+You hand it in twice, on the form:
+
+| Parts | Hand in | When |
+|---|---|---|
+| A and B | The sheet, `ShopVisit.java` and one screenshot of a run | Before section 5. You run Part B in front of the TA at its start. |
+| C | The sheet, `ShopCheck.java` and one screenshot of a run | After section 5 (CSS, XPath and assert), before section 6. You run it in front of the TA at its start. |
 
 **This repo is for reading. Do not submit here.**
 
