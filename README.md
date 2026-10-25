@@ -10,7 +10,7 @@ Slides, lab sheets and the Selenium project for every section. A new week is add
 **With Git** (recommended — you only clone once):
 
 ```bash
-git clone https://github.com/MohamedShehab280/se2-sections.git
+git clone https://github.com/MohamedShehab280/software-testing.git
 ```
 
 Then every week:
