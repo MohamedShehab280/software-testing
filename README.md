@@ -22,7 +22,7 @@ Open it in IntelliJ: **File › Open** › choose `pom.xml` › **Open as Projec
 
 | File | |
 |---|---|
-| `Setup.java` | Ready. `Setup.chrome()` opens Chrome, and `Setup.pause()` waits two seconds. |
+| `Setup.java` | Ready. `Setup.chrome()` opens Chrome in incognito, and `Setup.pause()` waits two seconds. |
 | `ShopVisit.java` | Empty. **You write it** — Part B, Exercise 5. |
 | `ShopOrder.java` | Empty. **You write it** — Part C, Exercise 7. |
 
@@ -54,7 +54,7 @@ Place an order on saucedemo from start to end. Call `Setup.pause()` after every 
 | `tearDown` | `@AfterTest` | Closes the browser |
 
 **Use `Setup.chrome()`, not `new ChromeDriver()`.** On saucedemo, Chrome shows a "password found in a data
-breach" box after the login, and every click after it does nothing. `Setup.chrome()` turns that box off.
+breach" box after the login, and every click after it does nothing. In incognito that box does not appear.
 
 Run a class with the green ▶ next to its name, or both with right-click `testng.xml` › **Run**.
 
