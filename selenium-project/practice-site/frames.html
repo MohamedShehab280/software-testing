@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>iFrames · SE2 Practice Lab</title>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header id="site-header">
+  <div class="brand"><span class="logo">SE2</span><div><b>SE2 Practice Lab</b><small>FCI · Menoufia University</small></div></div>
+  <button id="toggle-hints" type="button">Hide hints</button>
+</header>
+<nav id="main-nav"><a id="nav-index" href="index.html">Home</a><a id="nav-forms" href="forms.html">Forms</a><a id="nav-dropdowns" href="dropdowns.html">Dropdowns</a><a id="nav-checkboxes" href="checkboxes.html">Checkboxes &amp; Radio</a><a id="nav-tables" href="tables.html">Tables</a><a id="nav-alerts" href="alerts.html">Alerts &amp; Modals</a><a id="nav-waits" href="waits.html">Waits &amp; Dynamic</a><a id="nav-frames" href="frames.html" class="active">iFrames</a><a id="nav-upload" href="upload.html">File Upload</a><a id="nav-drag-drop" href="drag-drop.html">Drag &amp; Drop</a></nav>
+<div id="bug-banner" hidden>Bug mode is on: this page has defects in it on purpose.</div>
+<main id="main-content">
+<h1 id="page-title">iFrames</h1>
+<p class="intro">A frame is a page inside the page. Selenium only sees one of them at a time.</p>
+<section class="card" id="card-single-frame">
+<h2>A form inside an iFrame <span class="tag">switchTo().frame()</span></h2>
+<iframe id="login-frame" name="loginFrame" src="frame-login.html" title="Login form in a frame"></iframe><div class="hint">Use: <code>driver.switchTo().frame("login-frame")</code> · <code>driver.switchTo().frame("loginFrame")</code> · <code>driver.switchTo().frame(driver.findElement(By.cssSelector("iframe#login-frame")))</code> · <code>driver.switchTo().defaultContent()</code></div>
+</section>
+<section class="card" id="card-multi-frame">
+<h2>Two frames, and a frame inside a frame <span class="tag">Index</span><span class="tag">parentFrame()</span></h2>
+<div class="row"><iframe id="frame-one" name="frameOne" src="frame-a.html" title="Frame A"></iframe><iframe id="frame-two" name="frameTwo" src="frame-b.html" title="Frame B"></iframe></div><div class="hint">Use: <code>driver.findElements(By.tagName("iframe")).size()</code> · <code>driver.switchTo().frame(1)  → Frame B</code> · <code>driver.switchTo().frame("nested-frame")  → inside B</code> · <code>driver.switchTo().parentFrame()  → back to B</code></div>
+</section>
+<section class="card" id="card-outside">
+<h2>Outside every frame <span class="tag">defaultContent()</span></h2>
+<input type="text" id="outside-input" name="outsideInput" placeholder="Type here after you leave the frame"><button type="button" id="outside-btn" class="btn btn-primary">Outside button</button><div class="result" id="outside-result" data-test="outside-result" aria-live="polite"></div><div class="hint">Note: <code>Inside a frame, these do not exist: NoSuchElementException</code> · <code>driver.switchTo().defaultContent() first</code></div>
+</section>
+
+</main>
+<footer id="site-footer">Software Engineering 2 · Eng. Mohamed Shehab · Practice site for Selenium WebDriver (Java)</footer>
+<script src="assets/site.js"></script>
+<script>
+
+document.getElementById('outside-btn').onclick = () =>
+  show('outside-result', 'Outside button clicked: ' + (document.getElementById('outside-input').value || '(empty)'));
+
+</script>
+</body>
+</html>

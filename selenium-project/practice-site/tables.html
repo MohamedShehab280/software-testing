@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tables · SE2 Practice Lab</title>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header id="site-header">
+  <div class="brand"><span class="logo">SE2</span><div><b>SE2 Practice Lab</b><small>FCI · Menoufia University</small></div></div>
+  <button id="toggle-hints" type="button">Hide hints</button>
+</header>
+<nav id="main-nav"><a id="nav-index" href="index.html">Home</a><a id="nav-forms" href="forms.html">Forms</a><a id="nav-dropdowns" href="dropdowns.html">Dropdowns</a><a id="nav-checkboxes" href="checkboxes.html">Checkboxes &amp; Radio</a><a id="nav-tables" href="tables.html" class="active">Tables</a><a id="nav-alerts" href="alerts.html">Alerts &amp; Modals</a><a id="nav-waits" href="waits.html">Waits &amp; Dynamic</a><a id="nav-frames" href="frames.html">iFrames</a><a id="nav-upload" href="upload.html">File Upload</a><a id="nav-drag-drop" href="drag-drop.html">Drag &amp; Drop</a></nav>
+<div id="bug-banner" hidden>Bug mode is on: this page has defects in it on purpose.</div>
+<main id="main-content">
+<h1 id="page-title">Tables</h1>
+<p class="intro">Read cells by row and column, filter rows, and sort.</p>
+<section class="card" id="card-static">
+<h2>Static table <span class="tag">Tag</span><span class="tag">XPath</span><span class="tag">CSS nth-child</span></h2>
+<table id="static-table" class="data"><thead><tr id="static-head"><th id="th-id">ID</th><th id="th-name">Name</th><th id="th-email">Email</th><th id="th-role">Role</th><th id="th-department">Department</th><th id="th-salary">Salary</th></tr></thead><tbody><tr id="staff-row-1"><td>1</td><td>Alice Johnson</td><td>alice@company.com</td><td>Tester</td><td>QA</td><td>15000</td></tr><tr id="staff-row-2"><td>2</td><td>Omar Farouk</td><td>omar@company.com</td><td>Developer</td><td>Engineering</td><td>22000</td></tr><tr id="staff-row-3"><td>3</td><td>Mona Adel</td><td>mona@company.com</td><td>Team lead</td><td>QA</td><td>27000</td></tr><tr id="staff-row-4"><td>4</td><td>Karim Nabil</td><td>karim@company.com</td><td>Developer</td><td>Engineering</td><td>19500</td></tr><tr id="staff-row-5"><td>5</td><td>Salma Ibrahim</td><td>salma@company.com</td><td>Analyst</td><td>Product</td><td>17000</td></tr><tr id="staff-row-6"><td>6</td><td>Youssef Ali</td><td>youssef@company.com</td><td>DevOps</td><td>Engineering</td><td>24000</td></tr></tbody></table><div class="hint">Locators: <code>By.xpath("//table[@id='static-table']//tr[2]/td[2]")</code> · <code>By.cssSelector("#static-table tbody tr:nth-child(3) td:nth-child(6)")</code> · <code>By.xpath("//td[text()='Salma Ibrahim']/following-sibling::td[last()]")</code></div>
+</section>
+<section class="card" id="card-search">
+<h2>Search and sort <span class="tag">Dynamic rows</span><span class="tag">findElements().size()</span></h2>
+<input type="search" id="table-search" name="tableSearch" placeholder="Filter by name or course"><table id="searchable-table" class="data"><thead><tr><th>#</th><th>Name</th><th>Course</th><th id="th-score" class="sortable" title="Click to sort">Score ⇅</th></tr></thead><tbody><tr id="student-row-1"><td>1</td><td>Ahmed Hassan</td><td>Software Testing</td><td>92</td></tr><tr id="student-row-2"><td>2</td><td>Nour Khaled</td><td>Databases</td><td>78</td></tr><tr id="student-row-3"><td>3</td><td>Sara Ahmed</td><td>Software Testing</td><td>100</td></tr><tr id="student-row-4"><td>4</td><td>Mahmoud Saad</td><td>Networks</td><td>64</td></tr><tr id="student-row-5"><td>5</td><td>Laila Fathy</td><td>Python Basics</td><td>88</td></tr><tr id="student-row-6"><td>6</td><td>Tarek Samir</td><td>Databases</td><td>95</td></tr><tr id="student-row-7"><td>7</td><td>Hana Mostafa</td><td>Networks</td><td>71</td></tr><tr id="student-row-8"><td>8</td><td>Ziad Emad</td><td>Software Testing</td><td>9</td></tr></tbody></table><div class="result" id="table-result" data-test="table-result" aria-live="polite"></div><div class="hint">Locators: <code>driver.findElements(By.cssSelector("#searchable-table tbody tr:not([hidden])")).size()</code> · <code>By.id("th-score")</code> · <code>By.xpath("//td[text()='Sara Ahmed']/../td[4]")</code></div>
+</section>
+<section class="card" id="card-complex">
+<h2>Complex table (colspan and rowspan) <span class="tag">XPath axes</span></h2>
+<table id="complex-table" class="data"><thead><tr><th rowspan="2">Quarter</th><th colspan="2">Engineering</th><th colspan="2">QA</th><th rowspan="2">Total</th></tr><tr><th>Pass</th><th>Fail</th><th>Pass</th><th>Fail</th></tr></thead><tbody><tr id="complex-row-q1"><td class="cell-quarter">Q1</td><td>40</td><td>5</td><td>30</td><td>2</td><td>77</td></tr><tr id="complex-row-q2"><td class="cell-quarter">Q2</td><td>38</td><td>9</td><td>33</td><td>1</td><td>81</td></tr><tr id="complex-row-q3"><td class="cell-quarter">Q3</td><td>45</td><td>3</td><td>35</td><td>4</td><td>87</td></tr><tr id="complex-row-q4"><td class="cell-quarter">Q4</td><td colspan="4" class="note">Not reported yet</td><td>0</td></tr></tbody></table><div class="hint">Locators: <code>By.xpath("//tr[@id='complex-row-q2']/td[3]")</code> · <code>By.xpath("//td[@class='cell-quarter' and text()='Q3']/following-sibling::td[last()]")</code></div>
+</section>
+
+</main>
+<footer id="site-footer">Software Engineering 2 · Eng. Mohamed Shehab · Practice site for Selenium WebDriver (Java)</footer>
+<script src="assets/site.js"></script>
+<script>
+
+const tbody = document.querySelector('#searchable-table tbody');
+const count = () => {
+  const rows = [...tbody.rows], shown = rows.filter(r => !r.hidden).length;
+  show('table-result', 'Showing ' + shown + ' of ' + rows.length);
+};
+document.getElementById('table-search').oninput = e => {
+  const q = BUGS ? e.target.value : e.target.value.toLowerCase();
+  [...tbody.rows].forEach(r => { const t = BUGS ? r.textContent : r.textContent.toLowerCase(); r.hidden = !t.includes(q); });
+  count();
+};
+let asc = false;
+document.getElementById('th-score').onclick = () => {
+  asc = !asc;
+  const rows = [...tbody.rows];
+  rows.sort((a, b) => {
+    const x = a.cells[3].textContent, y = b.cells[3].textContent;
+    const d = BUGS ? x.localeCompare(y) : Number(x) - Number(y);
+    return asc ? d : -d;
+  });
+  rows.forEach(r => tbody.appendChild(r));
+  show('table-result', 'Sorted by score, ' + (asc ? 'lowest' : 'highest') + ' first');
+};
+count();
+
+</script>
+</body>
+</html>

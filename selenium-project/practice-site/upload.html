@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>File Upload · SE2 Practice Lab</title>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header id="site-header">
+  <div class="brand"><span class="logo">SE2</span><div><b>SE2 Practice Lab</b><small>FCI · Menoufia University</small></div></div>
+  <button id="toggle-hints" type="button">Hide hints</button>
+</header>
+<nav id="main-nav"><a id="nav-index" href="index.html">Home</a><a id="nav-forms" href="forms.html">Forms</a><a id="nav-dropdowns" href="dropdowns.html">Dropdowns</a><a id="nav-checkboxes" href="checkboxes.html">Checkboxes &amp; Radio</a><a id="nav-tables" href="tables.html">Tables</a><a id="nav-alerts" href="alerts.html">Alerts &amp; Modals</a><a id="nav-waits" href="waits.html">Waits &amp; Dynamic</a><a id="nav-frames" href="frames.html">iFrames</a><a id="nav-upload" href="upload.html" class="active">File Upload</a><a id="nav-drag-drop" href="drag-drop.html">Drag &amp; Drop</a></nav>
+<div id="bug-banner" hidden>Bug mode is on: this page has defects in it on purpose.</div>
+<main id="main-content">
+<h1 id="page-title">File Upload</h1>
+<p class="intro">Uploading means <code>sendKeys</code> with a file path. A sample file is in <code>practice-site/assets/sample.txt</code>.</p>
+<section class="card" id="card-upload-tip">
+<h2>How Selenium uploads a file <span class="tag">sendKeys</span></h2>
+<p>Selenium cannot use the file window of the operating system. Send the full path of the file to the <code>&lt;input type="file"&gt;</code> instead:</p><pre id="upload-code">driver.findElement(By.id("simple-file-input"))
+      .sendKeys(Paths.get("practice-site/assets/sample.txt").toAbsolutePath().toString());</pre>
+</section>
+<section class="card" id="card-simple-upload">
+<h2>Simple file input <span class="tag">ID</span><span class="tag">Name</span><span class="tag">CSS</span></h2>
+<input type="file" id="simple-file-input" name="simpleFile"><div class="result" id="simple-file-result" data-test="simple-file-result" aria-live="polite"></div><div class="hint">Locators: <code>By.id("simple-file-input")</code> · <code>By.name("simpleFile")</code> · <code>By.cssSelector("input[type='file']")</code></div>
+</section>
+<section class="card" id="card-multi-upload">
+<h2>Several files at once <span class="tag">multiple</span></h2>
+<input type="file" id="multi-file-input" name="multipleFiles" multiple><div class="result" id="multi-file-result" data-test="multi-file-result" aria-live="polite"></div><div class="hint">Use: <code>WebElement input = driver.findElement(By.id("multi-file-input"));</code> · <code>input.sendKeys(pathOne + "\n" + pathTwo);</code></div>
+</section>
+<section class="card" id="card-image-upload">
+<h2>Images only <span class="tag">accept</span><span class="tag">Validation</span></h2>
+<input type="file" id="image-file-input" name="imageFile" accept="image/*"><img id="image-preview" alt="Preview of the uploaded image" hidden><div class="result" id="image-file-result" data-test="image-file-result" aria-live="polite"></div><div class="hint">Use: <code>By.cssSelector("input[accept*='image']")</code> · <code>a .txt file must be refused</code></div>
+</section>
+<section class="card" id="card-drop-upload">
+<h2>Styled drop zone with a hidden input <span class="tag">Hidden input</span></h2>
+<div class="drop-zone" id="drop-zone">Drop a file here<input type="file" id="hidden-drop-input" name="hiddenDropFile" class="hidden-input"></div><div class="result" id="drop-file-result" data-test="drop-file-result" aria-live="polite"></div><div class="hint">Use: <code>driver.findElement(By.id("hidden-drop-input")).sendKeys(path)</code> · <code>no need to click the zone</code></div>
+</section>
+<section class="card" id="card-form-upload">
+<h2>Upload as part of a form <span class="tag">ID</span><span class="tag">Name</span></h2>
+<form id="upload-form" name="uploadForm"><input type="text" id="uploader-name" name="uploaderName" placeholder="Your name"><input type="file" id="assignment-file" name="assignmentFile"><textarea id="file-description" name="fileDescription" rows="2" placeholder="Describe the file"></textarea><div class="buttons"><button type="submit" id="upload-submit" class="btn btn-primary">Upload</button><button type="reset" id="upload-reset" class="btn btn-outline">Reset</button></div></form><div class="result" id="form-upload-result" data-test="form-upload-result" aria-live="polite"></div><div class="hint">Locators: <code>By.id("uploader-name")</code> · <code>By.name("assignmentFile")</code> · <code>By.id("upload-submit")</code></div>
+</section>
+
+</main>
+<footer id="site-footer">Software Engineering 2 · Eng. Mohamed Shehab · Practice site for Selenium WebDriver (Java)</footer>
+<script src="assets/site.js"></script>
+<script>
+
+const $ = id => document.getElementById(id);
+const kb = f => (f.size / 1024).toFixed(1) + ' KB';
+$('simple-file-input').onchange = e => { const f = e.target.files[0]; show('simple-file-result', f ? 'Uploaded: ' + f.name + ' (' + kb(f) + ')' : ''); };
+$('multi-file-input').onchange = e => show('multi-file-result', e.target.files.length + ' files: ' + [...e.target.files].map(f => f.name).join(', '));
+$('image-file-input').onchange = e => {
+  const f = e.target.files[0]; if (!f) return;
+  if (!BUGS && !f.type.startsWith('image/')) { $('image-preview').hidden = true; show('image-file-result', 'Refused: ' + f.name + ' is not an image'); return; }
+  $('image-preview').src = URL.createObjectURL(f); $('image-preview').hidden = false; show('image-file-result', 'Image: ' + f.name);
+};
+$('hidden-drop-input').onchange = e => { const f = e.target.files[0]; show('drop-file-result', f ? 'Dropped: ' + f.name : ''); };
+$('upload-form').onsubmit = e => {
+  e.preventDefault(); const f = $('assignment-file').files[0];
+  show('form-upload-result', $('uploader-name').value + ' uploaded ' + (f ? f.name : 'nothing'));
+};
+$('upload-form').onreset = () => show('form-upload-result', 'The form was reset');
+
+</script>
+</body>
+</html>

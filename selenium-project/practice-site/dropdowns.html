@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dropdowns · SE2 Practice Lab</title>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header id="site-header">
+  <div class="brand"><span class="logo">SE2</span><div><b>SE2 Practice Lab</b><small>FCI · Menoufia University</small></div></div>
+  <button id="toggle-hints" type="button">Hide hints</button>
+</header>
+<nav id="main-nav"><a id="nav-index" href="index.html">Home</a><a id="nav-forms" href="forms.html">Forms</a><a id="nav-dropdowns" href="dropdowns.html" class="active">Dropdowns</a><a id="nav-checkboxes" href="checkboxes.html">Checkboxes &amp; Radio</a><a id="nav-tables" href="tables.html">Tables</a><a id="nav-alerts" href="alerts.html">Alerts &amp; Modals</a><a id="nav-waits" href="waits.html">Waits &amp; Dynamic</a><a id="nav-frames" href="frames.html">iFrames</a><a id="nav-upload" href="upload.html">File Upload</a><a id="nav-drag-drop" href="drag-drop.html">Drag &amp; Drop</a></nav>
+<div id="bug-banner" hidden>Bug mode is on: this page has defects in it on purpose.</div>
+<main id="main-content">
+<h1 id="page-title">Dropdowns</h1>
+<p class="intro">Real <code>&lt;select&gt;</code> elements use the <code>Select</code> class. The last card is a dropdown made of divs, which does not.</p>
+<section class="card" id="card-single">
+<h2>Single select <span class="tag">ID</span><span class="tag">Name</span><span class="tag">Select</span></h2>
+<select id="country-select" name="country" data-test="country-select"><option value="">-- choose a country --</option><option value="eg">Egypt</option><option value="sa">Saudi Arabia</option><option value="ae">United Arab Emirates</option><option value="jo">Jordan</option><option value="ma">Morocco</option></select><div class="result" id="country-result" data-test="country-result" aria-live="polite"></div><div class="hint">Use: <code>new Select(driver.findElement(By.id("country-select"))).selectByVisibleText("Egypt")</code> · <code>By.name("country")</code> · <code>By.tagName("select")</code></div>
+</section>
+<section class="card" id="card-chained">
+<h2>Chained dropdowns <span class="tag">Dependent</span><span class="tag">Wait for options</span></h2>
+<div class="row"><select id="continent-select" name="continent"><option value="">-- continent --</option><option value="africa">Africa</option><option value="asia">Asia</option><option value="europe">Europe</option></select><select id="city-select" name="city" disabled><option value="">-- city --</option></select></div><div class="result" id="chained-result" data-test="chained-result" aria-live="polite"></div><div class="hint">Locators: <code>step 1: By.id("continent-select")</code> · <code>step 2: By.id("city-select")</code> · <code>By.cssSelector("#city-select option:nth-child(2)")</code></div>
+</section>
+<section class="card" id="card-multi">
+<h2>Multi-select list <span class="tag">ID</span><span class="tag">CSS</span><span class="tag">isMultiple()</span></h2>
+<select id="skills-select" name="skills" multiple size="6"><option value="java">Java</option><option value="selenium">Selenium</option><option value="testng">TestNG</option><option value="postman">Postman</option><option value="jmeter">JMeter</option><option value="sql">SQL</option></select><div class="result" id="multi-result" data-test="multi-result" aria-live="polite"></div><div class="hint">Use: <code>select.selectByVisibleText("Selenium")</code> · <code>select.getAllSelectedOptions()</code> · <code>select.deselectAll()</code> · <code>By.cssSelector("select[multiple]")</code></div>
+</section>
+<section class="card" id="card-by">
+<h2>Select by index, value or text <span class="tag">Select</span></h2>
+<select id="priority-select" name="priority"><option value="">-- priority --</option><option value="low">Low</option><option value="medium">Medium</option><option value="high">High</option><option value="critical">Critical</option></select><div class="result" id="priority-result" data-test="priority-result" aria-live="polite"></div><div class="hint">Use: <code>selectByIndex(3)</code> · <code>selectByValue("high")</code> · <code>selectByVisibleText("High")</code> · <code>getFirstSelectedOption().getText()</code></div>
+</section>
+<section class="card" id="card-custom">
+<h2>Custom dropdown (not a select) <span class="tag">Class</span><span class="tag">XPath</span><span class="tag">click()</span></h2>
+<div class="custom-dropdown" id="custom-dropdown"><button type="button" id="custom-toggle" class="custom-toggle">Choose a language ▾</button><div class="custom-menu" id="custom-menu" hidden><div class="custom-option" id="option-java" data-value="java">Java</div><div class="custom-option" id="option-python" data-value="python">Python</div><div class="custom-option" id="option-csharp" data-value="csharp">C#</div><div class="custom-option" id="option-javascript" data-value="javascript">JavaScript</div></div></div><div class="result" id="custom-result" data-test="custom-result" aria-live="polite"></div><div class="hint">Locators: <code>By.id("custom-toggle")</code> · <code>By.xpath("//div[@data-value='java']")</code> · <code>new Select(...) does not work here: it is not a select</code></div>
+</section>
+
+</main>
+<footer id="site-footer">Software Engineering 2 · Eng. Mohamed Shehab · Practice site for Selenium WebDriver (Java)</footer>
+<script src="assets/site.js"></script>
+<script>
+
+const CITIES = {africa: ['Cairo', 'Alexandria', 'Nairobi'], asia: ['Tokyo', 'Dubai', 'Riyadh'], europe: ['Paris', 'Berlin', 'Rome']};
+const sel = id => document.getElementById(id);
+sel('country-select').onchange = e => show('country-result', 'Selected: ' + e.target.selectedOptions[0].text);
+sel('continent-select').onchange = e => {
+  const c = e.target.value, city = sel('city-select');
+  city.innerHTML = '<option value="">-- city --</option>';
+  if (!c) { city.disabled = true; return; }
+  city.disabled = true;
+  setTimeout(() => {
+    const list = CITIES[BUGS && c === 'europe' ? 'asia' : c];
+    list.forEach(n => city.add(new Option(n, n.toLowerCase())));
+    city.disabled = false;
+  }, 600);
+};
+sel('city-select').onchange = e => show('chained-result', 'City: ' + e.target.selectedOptions[0].text);
+sel('skills-select').onchange = e => {
+  let s = [...e.target.selectedOptions].map(o => o.text);
+  if (BUGS && s.length > 1) s = s.slice(0, -1);
+  show('multi-result', 'Selected: ' + s.join(', '));
+};
+sel('priority-select').onchange = e => show('priority-result', 'Priority: ' + e.target.selectedOptions[0].text);
+sel('custom-toggle').onclick = () => { sel('custom-menu').hidden = !sel('custom-menu').hidden; };
+document.querySelectorAll('.custom-option').forEach(o => o.onclick = () => {
+  sel('custom-toggle').textContent = o.textContent + ' ▾';
+  sel('custom-menu').hidden = true;
+  show('custom-result', 'Language: ' + o.textContent);
+});
+
+</script>
+</body>
+</html>

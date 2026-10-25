@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>Login inside a frame</title><link rel="stylesheet" href="assets/site.css"></head>
+<body class="frame-body"><h2 id="frame-heading">Login inside a frame</h2><input type="text" id="frame-username" name="frameUser" placeholder="Username"><input type="password" id="frame-password" name="framePass" placeholder="Password"><button type="button" id="frame-login-btn" class="btn btn-primary">Log in</button><div class="result" id="frame-result"></div><a id="frame-link" href="#">Forgot your password?</a>
+<script>
+const show = (id, t) => { document.getElementById(id).textContent = t; };
+document.getElementById('frame-login-btn').onclick = () => show('frame-result', 'Logged in as ' + document.getElementById('frame-username').value);
+document.getElementById('frame-link').onclick = e => { e.preventDefault(); show('frame-result', 'Reset link clicked'); };
+</script></body></html>

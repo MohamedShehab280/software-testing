@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Waits &amp; Dynamic · SE2 Practice Lab</title>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header id="site-header">
+  <div class="brand"><span class="logo">SE2</span><div><b>SE2 Practice Lab</b><small>FCI · Menoufia University</small></div></div>
+  <button id="toggle-hints" type="button">Hide hints</button>
+</header>
+<nav id="main-nav"><a id="nav-index" href="index.html">Home</a><a id="nav-forms" href="forms.html">Forms</a><a id="nav-dropdowns" href="dropdowns.html">Dropdowns</a><a id="nav-checkboxes" href="checkboxes.html">Checkboxes &amp; Radio</a><a id="nav-tables" href="tables.html">Tables</a><a id="nav-alerts" href="alerts.html">Alerts &amp; Modals</a><a id="nav-waits" href="waits.html" class="active">Waits &amp; Dynamic</a><a id="nav-frames" href="frames.html">iFrames</a><a id="nav-upload" href="upload.html">File Upload</a><a id="nav-drag-drop" href="drag-drop.html">Drag &amp; Drop</a></nav>
+<div id="bug-banner" hidden>Bug mode is on: this page has defects in it on purpose.</div>
+<main id="main-content">
+<h1 id="page-title">Waits &amp; Dynamic</h1>
+<p class="intro">Everything on this page changes over time. A plain <code>findElement</code> often runs too early: wait for the right condition first.</p>
+<section class="card" id="card-show-hide">
+<h2>Show and hide <span class="tag">isDisplayed()</span><span class="tag">visibilityOf</span></h2>
+<div class="buttons"><button type="button" id="show-btn" class="btn btn-primary">Show</button><button type="button" id="hide-btn" class="btn btn-outline">Hide</button><button type="button" id="toggle-btn" class="btn btn-outline">Toggle</button></div><div id="dynamic-box" class="box" hidden>I was hidden. Now you can see me.</div><div class="hint">Use: <code>new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOfElementLocated(By.id("dynamic-box")))</code> · <code>driver.findElement(By.id("dynamic-box")).isDisplayed()</code></div>
+</section>
+<section class="card" id="card-delayed">
+<h2>An element that appears after 3 seconds <span class="tag">presenceOf</span></h2>
+<button type="button" id="load-delayed-btn" class="btn btn-primary">Load it</button><div id="delayed-spinner" class="spinner" hidden>Loading…</div><div id="delayed-slot"></div><div class="hint">Use: <code>new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.presenceOfElementLocated(By.id("delayed-element")))</code> · <code>findElement without a wait throws NoSuchElementException here</code></div>
+</section>
+<section class="card" id="card-clickable">
+<h2>A button enabled after 4 seconds <span class="tag">elementToBeClickable</span></h2>
+<button type="button" id="start-enable-btn" class="btn btn-outline">Start</button><button type="button" id="late-btn" class="btn btn-primary" disabled>Click me when I am ready</button><div class="result" id="late-result" data-test="late-result" aria-live="polite"></div><div class="hint">Use: <code>new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(By.id("late-btn")))</code></div>
+</section>
+<section class="card" id="card-progress">
+<h2>Progress bar <span class="tag">Attribute</span><span class="tag">Custom condition</span></h2>
+<button type="button" id="start-progress-btn" class="btn btn-primary">Start</button><div class="progress"><div id="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%"></div></div><div id="progress-label">0%</div><div id="progress-done" class="box" hidden>Done: the bar reached 100%.</div><div class="hint">Use: <code>driver.findElement(By.id("progress-bar")).getAttribute("aria-valuenow")</code> · <code>new WebDriverWait(driver, Duration.ofSeconds(10)).until(d -&gt; d.findElement(By.id("progress-bar")).getAttribute("aria-valuenow").equals("100"))</code></div>
+</section>
+<section class="card" id="card-counter">
+<h2>Counter <span class="tag">getText()</span><span class="tag">XPath text()</span></h2>
+<div class="buttons"><button type="button" id="decrement-btn" class="btn btn-outline">−</button><span id="counter-value" data-count="0">0</span><button type="button" id="increment-btn" class="btn btn-outline">+</button><button type="button" id="reset-counter-btn" class="btn btn-outline">Reset</button></div><div class="hint">Read: <code>By.id("counter-value")).getText()</code> · <code>getAttribute("data-count")</code> · <code>By.xpath("//span[@id='counter-value' and text()='5']")</code></div>
+</section>
+<section class="card" id="card-skeleton">
+<h2>Loading placeholder, then content <span class="tag">invisibilityOf</span></h2>
+<button type="button" id="load-content-btn" class="btn btn-primary">Load the course</button><div id="skeleton-wrapper" class="skeleton" hidden><div></div><div></div><div></div></div><div id="loaded-content" hidden><h3 id="loaded-title">Software Engineering 2</h3><p id="loaded-text">Ten weeks of testing: manual, Selenium, API, mobile and performance.</p></div><div class="hint">Use: <code>new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.invisibilityOfElementLocated(By.id("skeleton-wrapper")))</code> · <code>driver.findElement(By.id("loaded-title")).getText()</code></div>
+</section>
+<section class="card" id="card-text">
+<h2>Text that changes <span class="tag">textToBe</span></h2>
+<button type="button" id="change-text-btn" class="btn btn-primary">Start the job</button><div id="dynamic-text" class="box">Waiting to start</div><div class="hint">Use: <code>new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.textToBe(By.id("dynamic-text"), "Success: the job is done"))</code></div>
+</section>
+<section class="card" id="card-toast">
+<h2>Toast message <span class="tag">Appears, then disappears</span></h2>
+<button type="button" id="show-toast-btn" class="btn btn-primary">Show the toast</button><div class="hint">Use: <code>new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOfElementLocated(By.id("toast-message")))</code> · <code>new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.invisibilityOfElementLocated(By.id("toast-message")))</code></div>
+</section>
+<section class="card" id="card-stale">
+<h2>An element that is replaced <span class="tag">StaleElementReferenceException</span></h2>
+<button type="button" id="rerender-btn" class="btn btn-primary">Re-render the item</button><div id="stale-holder"><div id="stale-item" class="box">Version 1</div></div><div class="hint">Use: <code>WebElement item = driver.findElement(By.id("stale-item"));</code> · <code>click Re-render, then item.getText() throws StaleElementReferenceException</code> · <code>new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.stalenessOf(item))</code></div>
+</section>
+<div id="toast-message" class="toast" hidden>Your changes were saved.</div>
+</main>
+<footer id="site-footer">Software Engineering 2 · Eng. Mohamed Shehab · Practice site for Selenium WebDriver (Java)</footer>
+<script src="assets/site.js"></script>
+<script>
+
+const $ = id => document.getElementById(id);
+$('show-btn').onclick = () => { $('dynamic-box').hidden = false; };
+$('hide-btn').onclick = () => { $('dynamic-box').hidden = true; };
+$('toggle-btn').onclick = () => { $('dynamic-box').hidden = !$('dynamic-box').hidden; };
+$('load-delayed-btn').onclick = () => {
+  $('delayed-slot').innerHTML = ''; $('delayed-spinner').hidden = false;
+  setTimeout(() => {
+    $('delayed-spinner').hidden = true;
+    const d = document.createElement('div');
+    d.id = 'delayed-element'; d.className = 'box'; d.textContent = 'I appeared after 3 seconds.';
+    $('delayed-slot').appendChild(d);
+  }, BUGS ? 12000 : 3000);
+};
+$('start-enable-btn').onclick = () => { $('late-btn').disabled = true; setTimeout(() => { $('late-btn').disabled = false; }, 4000); };
+$('late-btn').onclick = () => show('late-result', 'The late button was clicked');
+$('start-progress-btn').onclick = () => {
+  let v = 0; $('progress-done').hidden = true;
+  const t = setInterval(() => {
+    v = Math.min(100, v + 10);
+    $('progress-bar').style.width = v + '%'; $('progress-bar').setAttribute('aria-valuenow', String(v));
+    $('progress-label').textContent = v + '%';
+    if (v >= (BUGS ? 90 : 100)) { clearInterval(t); $('progress-done').hidden = false; }
+  }, 400);
+};
+const setCount = n => { $('counter-value').textContent = String(n); $('counter-value').dataset.count = String(n); };
+$('increment-btn').onclick = () => setCount(Number($('counter-value').dataset.count) + 1);
+$('decrement-btn').onclick = () => setCount(Number($('counter-value').dataset.count) - (BUGS ? 2 : 1));
+$('reset-counter-btn').onclick = () => setCount(0);
+$('load-content-btn').onclick = () => {
+  $('loaded-content').hidden = true; $('skeleton-wrapper').hidden = false;
+  setTimeout(() => { $('skeleton-wrapper').hidden = true; $('loaded-content').hidden = false; }, 2500);
+};
+$('change-text-btn').onclick = () => {
+  $('dynamic-text').textContent = 'Processing…';
+  setTimeout(() => { $('dynamic-text').textContent = 'Success: the job is done'; }, 2000);
+};
+$('show-toast-btn').onclick = () => { $('toast-message').hidden = false; setTimeout(() => { $('toast-message').hidden = true; }, 3000); };
+let version = 1;
+$('rerender-btn').onclick = () => {
+  version++;
+  const n = document.createElement('div'); n.id = 'stale-item'; n.className = 'box'; n.textContent = 'Version ' + version;
+  $('stale-holder').replaceChildren(n);
+};
+
+</script>
+</body>
+</html>
