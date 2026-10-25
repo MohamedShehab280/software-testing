@@ -21,12 +21,21 @@ git pull
 
 **Without Git:** the green **Code** button at the top of this page › **Download ZIP**.
 
-## The weeks
+## One branch per week
 
-| Week | Topic | Slides | Code |
-|---|---|---|---|
-| 3 | Defect Reports and First Selenium Script | [slides](week-03/Week%203%20-%20Defect%20Reports%20and%20First%20Selenium%20Script.pptx) | [`week3`](selenium-project/src/test/java/week3) |
-| 4 | Locators and Assertions | [slides](week-04/Week%204%20-%20Locators%20and%20Assertions.pptx) | [`week4`](selenium-project/src/test/java/week4) |
+`main` always has the latest week. Each week also has its own branch, with the project exactly as it
+was at the end of that section:
+
+| Week | Branch | Topic | Slides | Code |
+|---|---|---|---|---|
+| 3 | [`week-03`](../../tree/week-03) | Defect Reports and First Selenium Script | [slides](week-03/Week%203%20-%20Defect%20Reports%20and%20First%20Selenium%20Script.pptx) | [`week3`](selenium-project/src/test/java/week3) |
+| 4 | [`week-04`](../../tree/week-04) | Locators | [slides](week-04/Week%204%20-%20Locators%20and%20Assertions.pptx) | [`week4`](selenium-project/src/test/java/week4) |
+
+To move to a week's branch after cloning:
+
+```bash
+git checkout week-03
+```
 
 Recordings of every section: [YouTube playlist](https://www.youtube.com/playlist?list=PLKnIp8idj8qM)
 
@@ -53,8 +62,8 @@ You hand it in twice, on the form:
 ## The Selenium project
 
 [`selenium-project/`](selenium-project/) is one Maven project that grows every week: a package per
-week (`week3`, `week4`, …), and two reference files in each — the shape, not the answers. How to
-open and run it is in its own [README](selenium-project/README.md).
+week (`week3`, `week4`, …) with the code from that section. How to open and run it is in its own
+[README](selenium-project/README.md).
 
 It also has a **practice site** — nine local pages with every kind of element to practise on, each with Java hints: [`selenium-project/src/test/resources/practice-site`](selenium-project/src/test/resources/practice-site/index.html).
 

@@ -18,7 +18,7 @@ TestNG, and Selenium downloads the Chrome driver by itself the first time you ru
 3. Open any class with a green ▶ next to its name and click it. To run all of them: right-click
    `testng.xml` › **Run**.
 
-Each week has two files, to show you the shape. The rest you write yourself in the lab sheet.
+Each week has the code from that section. The task you write yourself, in your own project.
 
 ## The practice site
 
@@ -47,14 +47,23 @@ driver.get(website.toURI() + "?hints=off");
 | File | What it shows |
 |---|---|
 | `FirstProject` | The shape of a test: `@Test`, open Chrome, go to a page, print the title, close. |
-| `BrowserActions` | Every browser command from the section, each behind a method with a clear name: navigation, window size and position, page title and URL, tabs and handles, closing. It has no `@Test`, so it does not run on its own. Use it as a reference. |
+| `NavigationDemo` | `get()` and `navigate().to()`, back, forward and refresh, then window sizes: maximize, minimize, fullscreen, size and position. |
+| `PageInfoDemo` | Reading the page: title, URL, page source and the window handle. |
+| `BrowserActions` | Every browser command from the section, each behind a method with a clear name: navigation, window size and position, page title and URL, tabs and handles, closing. It has no `@Test`, so it does not run on its own. |
+| `BrowserActionsDemo` | The tests that use `BrowserActions`, in order with `priority`. |
 
-## Week 4 — locators and assertions
+## Week 4 — locators
+
+The section, step by step. Run them in order; each one waits a second between actions so you can see it.
 
 | File | What it shows |
 |---|---|
-| `ElementActions` | Every element command behind a method: `type`, `click`, `getText`, `getAttribute`, `isDisplayed`, `count`. Like `BrowserActions`, it has no `@Test`. |
-| `LoginTest` | Four real tests with asserts: a valid login, a wrong password, a locked-out user and an empty username. Uses `@BeforeMethod` so every test starts with a fresh browser. Run it: all four pass. |
+| `Step01_Recap` | Last week in one class: `@BeforeTest`, `@AfterTest`, `priority`, `navigate()`. |
+| `Step02_WindowHandles` | `getWindowHandle()` and `getWindowHandles()` with two tabs. |
+| `Step03_CloseVsQuit` | `close()` shuts one tab, `quit()` shuts Chrome. |
+| `Step04_OpenPracticeSite` | Opening the practice site from `src/test/resources` with `new File(...)`. |
+| `Step05_Locators` | `By.id`, `By.name`, `By.className`, `By.tagName`, `linkText` and `partialLinkText` on `forms.html`. |
+| `Step06_Actions` | `sendKeys`, `clear`, `click`, `isDisplayed`, `isEnabled`, and `getText` against `getAttribute("value")`. |
 
 Before you write a locator in code, test it in Chrome: **F12 › Elements › Ctrl + F**, type it, and
 look for **1 of 1**.
