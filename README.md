@@ -8,11 +8,11 @@ always on [`main`](../../tree/main).
 
 ## Week 3 — Defect Reports and First Selenium Script
 
-| Slides | Code |
-|---|---|
-| [slides](week-03/Week%203%20-%20Defect%20Reports%20and%20First%20Selenium%20Script.pptx) | [`week3`](selenium-project/src/test/java/week3) |
+| Slides | Code | Recording |
+|---|---|---|
+| [slides](week-03/Week%203%20-%20Defect%20Reports%20and%20First%20Selenium%20Script.pptx) | [`week3`](selenium-project/src/test/java/week3) | [video](https://youtu.be/Y9GRkEYdb_M) |
 
-Recording: [YouTube playlist](https://www.youtube.com/playlist?list=PLKnIp8idj8qM)
+All the recordings: [YouTube playlist](https://www.youtube.com/playlist?list=PLKnIp8idj8qM)
 
 ## Get it
 
