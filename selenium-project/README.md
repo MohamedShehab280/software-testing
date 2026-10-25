@@ -22,21 +22,23 @@ Each week has two files, to show you the shape. The rest you write yourself in t
 
 ## The practice site
 
-[`practice-site/`](practice-site/) is a small website that lives inside this project: nine pages, one for
-each kind of element — forms, dropdowns, checkboxes and radio buttons, tables, alerts and modals, waits,
-iFrames, file upload, and drag and drop. Every element has a hint with its locators, in Java.
+[`src/test/resources/practice-site/`](src/test/resources/practice-site/) is a small website that lives inside
+this project: nine pages, one for each kind of element — forms, dropdowns, checkboxes and radio buttons,
+tables, alerts and modals, waits, iFrames, file upload, and drag and drop. Every element has a hint with its
+locators, in Java.
 
-It is a local file, so you open it from the project folder:
+It sits in `src/test/resources`, the Maven folder for files your tests need. When you run a test, Maven
+copies it next to your compiled tests, so you open it by name and it works on any computer:
 
 ```java
-driver.get(Paths.get("practice-site/forms.html").toUri().toString());
+driver.get(getClass().getResource("/practice-site/forms.html").toString());
 ```
 
-Double-click `practice-site/index.html` to look at it in Chrome first. The **Hide hints** button at the top
-hides every hint; in code, add `?hints=off` to the address:
+Double-click `src/test/resources/practice-site/index.html` to look at it in Chrome first. The **Hide hints**
+button at the top hides every hint; in code, add `?hints=off` to the address:
 
 ```java
-driver.get(Paths.get("practice-site/forms.html").toUri() + "?hints=off");
+driver.get(getClass().getResource("/practice-site/forms.html") + "?hints=off");
 ```
 
 ## Week 3 — the browser

@@ -51,7 +51,7 @@ screenshot of a run. At the start of section 5 you run Parts B and C in front of
 week (`week3`, `week4`, …), and two reference files in each — the shape, not the answers. How to
 open and run it is in its own [README](selenium-project/README.md).
 
-It also has a **practice site** — nine local pages with every kind of element to practise on, each with Java hints: [`selenium-project/practice-site`](selenium-project/practice-site/index.html).
+It also has a **practice site** — nine local pages with every kind of element to practise on, each with Java hints: [`selenium-project/src/test/resources/practice-site`](selenium-project/src/test/resources/practice-site/index.html).
 
 ## Questions
 
