@@ -9,8 +9,8 @@ write the two classes. The lab sheet itself is on [`main`](../../tree/main/week-
 ## Get it
 
 ```bash
-git clone https://github.com/MohamedShehab280/se2-sections.git
-cd se2-sections
+git clone https://github.com/MohamedShehab280/software-testing.git
+cd software-testing
 git checkout java-task
 ```
 
