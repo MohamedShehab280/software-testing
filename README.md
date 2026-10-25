@@ -65,6 +65,9 @@ week (`week3`, `week4`, …) with the code from that section. How to open and ru
 [README](selenium-project/README.md).
 
 It also has a **practice site** — nine local pages with every kind of element to practise on, each with Java hints: [`selenium-project/src/test/resources/practice-site`](selenium-project/src/test/resources/practice-site/index.html).
+It is based on the practice site in Tarek Roshdy's Udemy course
+[The Complete Software Testing Bootcamp](https://www.udemy.com/course/testerbootcamp/), rebuilt for this
+section with the hints in Java.
 
 ## Questions
 

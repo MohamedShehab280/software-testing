@@ -27,6 +27,10 @@ this project: nine pages, one for each kind of element — forms, dropdowns, che
 tables, alerts and modals, waits, iFrames, file upload, and drag and drop. Every element has a hint with its
 locators, in Java.
 
+It is based on the practice site in Tarek Roshdy's Udemy course
+[The Complete Software Testing Bootcamp](https://www.udemy.com/course/testerbootcamp/), rebuilt for this
+section.
+
 It sits in `src/test/resources`, the Maven folder for files your tests need. Open a page with its path from
 the project folder — the same way as in the course:
 
