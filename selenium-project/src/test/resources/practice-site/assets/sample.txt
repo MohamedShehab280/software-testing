@@ -1,1 +1,0 @@
-A sample file for the upload page of the SE2 Practice Lab.

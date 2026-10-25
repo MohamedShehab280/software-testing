@@ -3,7 +3,4 @@
     <test name="Week 3 - First script">
         <classes><class name="week3.FirstProject"/></classes>
     </test>
-    <test name="Week 4 - Locators">
-        <classes><class name="week4.Step05_Locators"/></classes>
-    </test>
 </suite>

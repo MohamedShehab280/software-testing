@@ -18,29 +18,7 @@ TestNG, and Selenium downloads the Chrome driver by itself the first time you ru
 3. Open any class with a green ▶ next to its name and click it. To run all of them: right-click
    `testng.xml` › **Run**.
 
-Each week has the code from that section. The task you write yourself, in your own project.
-
-## The practice site
-
-[`src/test/resources/practice-site/`](src/test/resources/practice-site/) is a small website that lives inside
-this project: nine pages, one for each kind of element — forms, dropdowns, checkboxes and radio buttons,
-tables, alerts and modals, waits, iFrames, file upload, and drag and drop. Every element has a hint with its
-locators, in Java.
-
-It sits in `src/test/resources`, the Maven folder for files your tests need. Open a page with its path from
-the project folder — the same way as in the course:
-
-```java
-File website = new File("src/test/resources/practice-site/forms.html");
-driver.get(website.toURI().toString());
-```
-
-Double-click `src/test/resources/practice-site/index.html` to look at it in Chrome first. The **Hide hints**
-button at the top hides every hint; in code, add `?hints=off` to the address:
-
-```java
-driver.get(website.toURI() + "?hints=off");
-```
+Each week has the code from that section.
 
 ## Week 3 — the browser
 
@@ -52,26 +30,9 @@ driver.get(website.toURI() + "?hints=off");
 | `BrowserActions` | Every browser command from the section, each behind a method with a clear name: navigation, window size and position, page title and URL, tabs and handles, closing. It has no `@Test`, so it does not run on its own. |
 | `BrowserActionsDemo` | The tests that use `BrowserActions`, in order with `priority`. |
 
-## Week 4 — locators
+## Your own project
 
-The section, step by step. Run them in order; each one waits a second between actions so you can see it.
-
-| File | What it shows |
-|---|---|
-| `Step01_Recap` | Last week in one class: `@BeforeTest`, `@AfterTest`, `priority`, `navigate()`. |
-| `Step02_WindowHandles` | `getWindowHandle()` and `getWindowHandles()` with two tabs. |
-| `Step03_CloseVsQuit` | `close()` shuts one tab, `quit()` shuts Chrome. |
-| `Step04_OpenPracticeSite` | Opening the practice site from `src/test/resources` with `new File(...)`. |
-| `Step05_Locators` | `By.id`, `By.name`, `By.className`, `By.tagName`, `linkText` and `partialLinkText` on `forms.html`. |
-| `Step06_Actions` | `sendKeys`, `clear`, `click`, `isDisplayed`, `isEnabled`, and `getText` against `getAttribute("value")`. |
-
-Before you write a locator in code, test it in Chrome: **F12 › Elements › Ctrl + F**, type it, and
-look for **1 of 1**.
-
-## Your task
-
-The [lab sheet for weeks 3 and 4](../week-04/Weeks%203-4%20-%20Lab%20Sheet.pdf). Do Parts B and C in
-your **own** Maven project — create it yourself, do not just open this one. Add the two
+Create your **own** Maven project in IntelliJ — do not just open this one. Add the two
 dependencies to `pom.xml` and reload Maven:
 
 ```xml
