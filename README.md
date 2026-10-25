@@ -48,14 +48,13 @@ Word ([PDF](week-04/Weeks%203-4%20-%20Lab%20Sheet.pdf) to read). One task, three
 |---|---|
 | A | Test saucedemo.com by hand: find the 8 defects of problem_user (the first is done for you), and write a full report for one |
 | B | Write `ShopVisit`: navigation, window sizes, tabs and priorities |
-| C | Write `ShopCheck`: locators and asserts that catch the defects you found in Part A |
+| C | Six locators from DevTools, then `ShopOrder`: automate an order from login to Generate PDF |
 
-You hand it in twice, on the form:
+Parts B and C are written in a ready project on the **[`java-task`](../../tree/java-task)** branch:
 
-| Parts | Hand in | When |
-|---|---|---|
-| A and B | The sheet, `ShopVisit.java` and one screenshot of a run | Before section 5. You run Part B in front of the TA at its start. |
-| C | The sheet, `ShopCheck.java` and one screenshot of a run | After section 5 (CSS, XPath and assert), before section 6. You run it in front of the TA at its start. |
+```bash
+git checkout java-task
+```
 
 **This repo is for reading. Do not submit here.**
 

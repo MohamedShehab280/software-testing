@@ -70,24 +70,8 @@ look for **1 of 1**.
 
 ## Your task
 
-The [lab sheet for weeks 3 and 4](../week-04/Weeks%203-4%20-%20Lab%20Sheet.pdf). Do Parts B and C in
-your **own** Maven project — create it yourself, do not just open this one. Add the two
-dependencies to `pom.xml` and reload Maven:
-
-```xml
-<dependencies>
-    <dependency>
-        <groupId>org.seleniumhq.selenium</groupId>
-        <artifactId>selenium-java</artifactId>
-        <version>4.43.0</version>
-    </dependency>
-    <dependency>
-        <groupId>org.testng</groupId>
-        <artifactId>testng</artifactId>
-        <version>7.12.0</version>
-    </dependency>
-</dependencies>
-```
+The [lab sheet for weeks 3 and 4](../week-04/Weeks%203-4%20-%20Lab%20Sheet.pdf). Parts B and C are
+written in the ready project on the [`java-task`](../../../tree/java-task) branch, not in this one.
 
 ## If something does not work
 
