@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Java task - weeks 3 and 4">
+    <test name="Part B - ShopVisit">
+        <classes><class name="task.ShopVisit"/></classes>
+    </test>
+    <test name="Part C - ShopOrder">
+        <classes><class name="task.ShopOrder"/></classes>
+    </test>
+</suite>
