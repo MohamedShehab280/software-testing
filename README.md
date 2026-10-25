@@ -48,7 +48,7 @@ Word ([PDF](week-04/Weeks%203-4%20-%20Lab%20Sheet.pdf) to read). One task, three
 |---|---|
 | A | Test saucedemo.com by hand: find the 8 defects of problem_user (the first is done for you), and write a full report for one |
 | B | Write `ShopVisit`: navigation, window sizes, tabs and priorities |
-| C | Six locators from DevTools, then `ShopOrder`: automate an order from login to Generate PDF |
+| C | Write `ShopOrder`: automate an order from login to Generate PDF |
 
 Parts B and C are written in a ready project on the **[`java-task`](../../tree/java-task)** branch:
 
